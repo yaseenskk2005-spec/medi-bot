@@ -1,0 +1,22 @@
+{
+  "overview": "Medi Bot is a professional AI-powered medical chatbot that lets users ask health questions, explore symptoms, and get quick medical information in a polished conversational interface with dark/light mode support.",
+  "features": [
+    "Conversational medical chatbot with user and bot chat bubbles",
+    "Quick-start suggestion cards for common medical queries",
+    "Medical disclaimer banner for safe usage awareness",
+    "Dark and light mode toggle with system preference detection",
+    "Clear chat history with confirmation dialog",
+    "Fully responsive mobile-friendly layout",
+    "AI-powered responses via backend HTTP outcalls",
+    "Smooth auto-scroll and timestamps on all messages"
+  ],
+  "category": "health",
+  "tags": [
+    "medical",
+    "chatbot",
+    "ai",
+    "health",
+    "chat"
+  ],
+  "last_updated": "2026-04-22T18:44:22.406Z"
+}

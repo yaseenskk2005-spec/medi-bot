@@ -1,0 +1,37 @@
+// Version: 1.0.0
+type ChatMessage__559859432 =
+  {
+    content : Text;
+    role : MessageRole__512297421;
+    timestamp : Timestamp__753029554
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type MessageRole__49436217 = {#assistant; #user};
+type MessageRole__512297421 = MessageRole__49436217;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Timestamp__301639476 = Int;
+type Timestamp__753029554 = Timestamp__301639476;
+actor {
+  stable AI_API_KEY : Text;
+  stable AI_API_URL : Text;
+  stable callerHistories :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<ChatMessage__559859432>>;
+      var size : Nat__490723111
+    }
+};

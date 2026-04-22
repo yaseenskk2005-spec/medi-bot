@@ -1,0 +1,51 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Timestamp = int;
+type ResponseMetadata = 
+ record {
+   model: text;
+   processingTimeMs: nat;
+   tokenEstimate: nat;
+ };
+type MessageRole = 
+ variant {
+   assistant;
+   user;
+ };
+type ChatMessage = 
+ record {
+   content: text;
+   role: MessageRole;
+   timestamp: Timestamp;
+ };
+type BotResponse = 
+ record {
+   message: ChatMessage;
+   metadata: ResponseMetadata;
+ };
+service : {
+  clearHistory: () -> ();
+  getSuggestions: () -> (vec text) query;
+  sendMessage: (userMessage: text) -> (BotResponse);
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+}

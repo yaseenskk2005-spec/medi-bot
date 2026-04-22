@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: Fraunces, serif;
+    --font-body: GeneralSans, sans-serif;
+    --font-mono: GeistMono, monospace;
+    --radius: 0.625rem;
+
+    --background: 0.98 0.01 0;
+    --foreground: 0.18 0.01 0;
+    --card: 0.99 0 0;
+    --card-foreground: 0.15 0.01 0;
+    --popover: 0.99 0 0;
+    --popover-foreground: 0.15 0.01 0;
+
+    --primary: 0.58 0.11 261;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.72 0.18 142;
+    --secondary-foreground: 0.16 0.01 0;
+    --muted: 0.88 0.02 0;
+    --muted-foreground: 0.48 0.01 0;
+
+    --accent: 0.68 0.15 80;
+    --accent-foreground: 0.99 0 0;
+
+    --destructive: 0.62 0.22 8;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.92 0.01 0;
+    --input: 0.94 0.01 0;
+    --ring: 0.58 0.11 261;
+
+    --chart-1: 0.58 0.11 261;
+    --chart-2: 0.72 0.18 142;
+    --chart-3: 0.68 0.15 80;
+    --chart-4: 0.65 0.22 40;
+    --chart-5: 0.6 0.12 185;
+
+    --sidebar: 0.98 0.01 0;
+    --sidebar-foreground: 0.18 0.01 0;
+    --sidebar-primary: 0.58 0.11 261;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.72 0.18 142;
+    --sidebar-accent-foreground: 0.16 0.01 0;
+    --sidebar-border: 0.92 0.01 0;
+    --sidebar-ring: 0.58 0.11 261;
+  }
+
+  .dark {
+    --background: 0.16 0.01 255;
+    --foreground: 0.92 0.01 0;
+    --card: 0.22 0.01 255;
+    --card-foreground: 0.94 0.01 0;
+    --popover: 0.26 0.02 255;
+    --popover-foreground: 0.94 0.01 0;
+
+    --primary: 0.72 0.13 261;
+    --primary-foreground: 0.12 0.01 0;
+
+    --secondary: 0.52 0.15 142;
+    --secondary-foreground: 0.88 0.01 0;
+    --muted: 0.32 0.01 0;
+    --muted-foreground: 0.62 0.01 0;
+
+    --accent: 0.68 0.15 80;
+    --accent-foreground: 0.14 0.01 0;
+
+    --destructive: 0.68 0.19 8;
+    --destructive-foreground: 0.12 0.01 0;
+
+    --border: 0.3 0.01 255;
+    --input: 0.32 0.01 255;
+    --ring: 0.72 0.13 261;
+
+    --chart-1: 0.72 0.13 261;
+    --chart-2: 0.52 0.15 142;
+    --chart-3: 0.68 0.15 80;
+    --chart-4: 0.62 0.22 8;
+    --chart-5: 0.7 0.12 185;
+
+    --sidebar: 0.22 0.01 255;
+    --sidebar-foreground: 0.92 0.01 0;
+    --sidebar-primary: 0.72 0.13 261;
+    --sidebar-primary-foreground: 0.12 0.01 0;
+    --sidebar-accent: 0.52 0.15 142;
+    --sidebar-accent-foreground: 0.88 0.01 0;
+    --sidebar-border: 0.3 0.01 255;
+    --sidebar-ring: 0.72 0.13 261;
+  }
+
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeistMono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .shadow-medical {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .bg-gradient-medical {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary)) 0%,
+      oklch(var(--secondary)) 100%
+    );
+  }
+
+  /* Chat message entrance animation */
+  @keyframes message-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Typing indicator pulse */
+  @keyframes typing-dot {
+    0%,
+    80%,
+    100% {
+      opacity: 0.2;
+      transform: scale(0.8);
+    }
+    40% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-message-in {
+      animation: message-in 0.25s ease-out forwards;
+    }
+
+    .animate-typing-1 {
+      animation: typing-dot 1.2s ease-in-out infinite 0s;
+    }
+    .animate-typing-2 {
+      animation: typing-dot 1.2s ease-in-out infinite 0.2s;
+    }
+    .animate-typing-3 {
+      animation: typing-dot 1.2s ease-in-out infinite 0.4s;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-message-in {
+      opacity: 1;
+      transform: none;
+    }
+    .animate-typing-1,
+    .animate-typing-2,
+    .animate-typing-3 {
+      animation: none;
+      opacity: 0.6;
+    }
+  }
+}
